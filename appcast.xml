@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>Yasin &amp; Tahlil App</title>
+        <description>Pembaruan terbaru untuk aplikasi Yasin dan Tahlil Platinum</description>
+        <language>id</language>
+        <item>
+            <title>Versi 1.0.1 (Update Fitur Baru)</title>
+            <description>Penambahan fitur baru dan perbaikan performa agar lebih ringan.</description>
+            <pubDate>Wed, 25 Feb 2026 12:00:00 +0700</pubDate>
+            <enclosure url="https://github.com/Yusuf-Ardiansyah/Yasin-Tahlil/releases/latest/download/app-arm64-v8a-release.apk"
+                sparkle:version="1.0.1"
+                sparkle:os="android" />
+        </item>
+    </channel>
+</rss>
