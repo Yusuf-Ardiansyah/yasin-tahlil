@@ -11,7 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:adhan/adhan.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart'; // <-- IMPORT BAHASA INDONESIA
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
@@ -22,10 +22,7 @@ import 'package:version/version.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting(
-    'id_ID',
-    null,
-  ); // <-- INISIALISASI LOKAL INDONESIA
+  await initializeDateFormatting('id_ID', null);
   await NotificationService.init();
   runApp(const AlWaqiahApp());
 }
@@ -68,7 +65,7 @@ class NotificationService {
 }
 
 // ==========================================
-// APP CORE & THEME + AUTO UPDATE CHROME
+// APP CORE & THEME
 // ==========================================
 class AlWaqiahApp extends StatelessWidget {
   const AlWaqiahApp({super.key});
@@ -431,40 +428,41 @@ class MenuUtama extends StatelessWidget {
               const SnackBar(content: Text("Izin lokasi diperlukan")),
             );
           }
-        } else if (type == "selamatan")
+        } else if (type == "selamatan") {
           Navigator.push(
             c,
             MaterialPageRoute(builder: (c) => const SelamatanPage()),
           );
-        else if (type == "asmaul_husna")
+        } else if (type == "asmaul_husna") {
           Navigator.push(
             c,
             MaterialPageRoute(builder: (c) => const AsmaulHusnaPage()),
           );
-        else if (type == "tasbih")
+        } else if (type == "tasbih") {
           Navigator.push(
             c,
             MaterialPageRoute(builder: (c) => const TasbihPage()),
           );
-        else if (type == "doa")
+        } else if (type == "doa") {
           Navigator.push(
             c,
             MaterialPageRoute(builder: (c) => const DoaListPage()),
           );
-        else
+        } else {
           Navigator.push(
             c,
             MaterialPageRoute(
               builder: (c) => SurahDetailPage(fileName: type, title: t),
             ),
           );
+        }
       },
     ),
   );
 }
 
 // ==========================================
-// HALAMAN: HITUNG SELAMATAN
+// HALAMAN: HITUNG SELAMATAN (GOLD EDITION)
 // ==========================================
 class SelamatanPage extends StatefulWidget {
   const SelamatanPage({super.key});
@@ -484,7 +482,12 @@ class _SelamatanPageState extends State<SelamatanPage> {
     return Card(
       color: const Color(0xFF1A1A1A),
       margin: const EdgeInsets.only(bottom: 10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+        side: BorderSide(
+          color: const Color(0xFFFFD54F).withOpacity(0.3),
+        ), // Border tipis emas
+      ),
       child: ListTile(
         title: Text(
           title,
@@ -495,13 +498,13 @@ class _SelamatanPageState extends State<SelamatanPage> {
         ),
         subtitle: Text(
           _formatDate(res),
-          style: const TextStyle(color: Colors.white70),
+          style: const TextStyle(color: Colors.white),
         ),
         trailing: const Icon(
           Icons.calendar_today,
-          size: 16,
-          color: Colors.white24,
-        ),
+          size: 18,
+          color: Color(0xFFFFD54F),
+        ), // Ikon kalender emas
       ),
     );
   }
@@ -510,9 +513,19 @@ class _SelamatanPageState extends State<SelamatanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("KALKULATOR SELAMATAN"),
+        title: const Text(
+          "KALKULATOR SELAMATAN",
+          style: TextStyle(
+            color: Color(0xFFFFD54F),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.5,
+          ),
+        ),
         backgroundColor: const Color(0xFF00332B),
         centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Color(0xFFFFD54F),
+        ), // Tombol back warna emas
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
@@ -521,19 +534,51 @@ class _SelamatanPageState extends State<SelamatanPage> {
             "Pilih Tanggal Meninggal (Geblag):",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.amberAccent,
+              color: Color(0xFFFFD54F),
             ),
           ),
           const SizedBox(height: 10),
           ElevatedButton.icon(
-            icon: const Icon(Icons.edit_calendar),
-            label: Text(_formatDate(selectedDate)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF141414),
+              // Latar gelap
+              foregroundColor: const Color(0xFFFFD54F),
+              // Text dan ikon emas
+              side: const BorderSide(color: Color(0xFFFFD54F), width: 1.5),
+              // Border emas
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            icon: const Icon(Icons.edit_calendar, size: 24),
+            label: Text(
+              _formatDate(selectedDate),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
             onPressed: () async {
               DateTime? picked = await showDatePicker(
                 context: context,
                 initialDate: selectedDate,
                 firstDate: DateTime(1900),
                 lastDate: DateTime(2100),
+                builder: (context, child) {
+                  return Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: const ColorScheme.dark(
+                        primary: Color(0xFFFFD54F), // Header popup emas
+                        onPrimary: Color(0xFF00332B), // Teks header hijau tua
+                        onSurface: Colors.white, // Teks tanggal putih
+                      ),
+                      textButtonTheme: TextButtonThemeData(
+                        style: TextButton.styleFrom(
+                          foregroundColor: const Color(0xFFFFD54F),
+                        ), // Tombol OK/Cancel emas
+                      ),
+                    ),
+                    child: child!,
+                  );
+                },
               );
               if (picked != null) setState(() => selectedDate = picked);
             },
@@ -638,10 +683,13 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
         ),
         backgroundColor: const Color(0xFF00332B),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Color(0xFFFFD54F)),
       ),
       body:
           prayerTimes == null
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+              )
               : ListView(
                 padding: const EdgeInsets.all(20),
                 children: [
@@ -735,7 +783,6 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
           style: const TextStyle(fontSize: 11, color: Colors.white60),
         ),
         const Divider(color: Colors.white10, height: 20),
-        // MANTRA FORMAT TANGGAL BAHASA INDONESIA DI BAWAH INI:
         Text(
           DateFormat('EEEE, d MMMM yyyy', 'id_ID').format(DateTime.now()),
           style: const TextStyle(fontSize: 14, color: Color(0xFFFFD54F)),
@@ -816,12 +863,15 @@ class _QiblahPageState extends State<QiblahPage>
         ),
         backgroundColor: const Color(0xFF00332B),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Color(0xFFFFD54F)),
       ),
       body: StreamBuilder(
         stream: FlutterQiblah.qiblahStream,
         builder: (c, AsyncSnapshot<QiblahDirection> snapshot) {
           if (!snapshot.hasData)
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+            );
           final q = snapshot.data!;
           double sel = (q.direction - q.qiblah).abs();
           if (sel < 2.0) {
@@ -1120,10 +1170,13 @@ class _SurahDetailPageState extends State<SurahDetailPage> {
           ),
         ),
         backgroundColor: const Color(0xFF00332B),
+        iconTheme: const IconThemeData(color: Color(0xFFFFD54F)),
       ),
       body:
           isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+              )
               : ScrollablePositionedList.builder(
                 itemCount: d.length,
                 itemScrollController: itemScrollController,
@@ -1275,10 +1328,13 @@ class _DoaListPageState extends State<DoaListPage> {
         ),
         backgroundColor: const Color(0xFF00332B),
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Color(0xFFFFD54F)),
       ),
       body:
           l
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+              )
               : ListView.builder(
                 itemCount: d.length,
                 itemBuilder:
