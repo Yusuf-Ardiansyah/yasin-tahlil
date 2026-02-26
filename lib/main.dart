@@ -66,7 +66,7 @@ class NotificationService {
 }
 
 // ==========================================
-// APP CORE & THEME
+// APP CORE & THEME (PREMIUM FORCE UPDATE)
 // ==========================================
 class AlWaqiahApp extends StatelessWidget {
   const AlWaqiahApp({super.key});
@@ -102,14 +102,19 @@ class AlWaqiahApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: UpgradeAlert(
-        dialogStyle: UpgradeDialogStyle.material,
-        showIgnore: false,
-        showLater: true,
+        dialogStyle: UpgradeDialogStyle.cupertino, // Gaya elegan ala iOS
+
+        // --- BAGIAN FORCE UPDATE (WAJIB UPDATE) ---
+        showIgnore: false,       // Hilangkan tombol "Abaikan"
+        showLater: false,        // Hilangkan tombol "Nanti"
+        // ------------------------------------------
+
         onUpdate: () {
           executeUpdate();
           return false;
         },
         upgrader: Upgrader(
+          messages: _CustomUpgraderMessages(), // Panggil pesan custom di sini
           storeController: UpgraderStoreController(
             onAndroid:
                 () => UpgraderAppcastStore(
@@ -124,6 +129,23 @@ class AlWaqiahApp extends StatelessWidget {
       ),
     );
   }
+}
+
+// ---------------------------------------------------------
+// WIDGET TAMBAHAN: CUSTOM TEKS UNTUK POP-UP UPDATE EKSKLUSIF
+// ---------------------------------------------------------
+class _CustomUpgraderMessages extends UpgraderMessages {
+  @override
+  String get title => '✨ PEMBARUAN EKSKLUSIF ✨';
+
+  @override
+  String get body => 'Versi terbaru Yasin & Tahlil Premium sudah tersedia.\n\nNikmati fitur terbaru, tampilan yang lebih elegan, dan perbaikan performa untuk kenyamanan ibadah Anda.\n\nMohon lakukan pembaruan sekarang untuk melanjutkan.';
+
+  @override
+  String get prompt => 'Silakan klik tombol di bawah ini:';
+
+  @override
+  String get buttonTitleUpdate => 'UNDUH SEKARANG 🚀';
 }
 
 // ==========================================
@@ -533,7 +555,7 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
     },
     {
       "title": "TOPO (4) - Berakit-rakit ke Hulu",
-      "desc": "Filosofi TOPO (bertapa) menggambarkan sebuah rumah tangga yang harus melewati kawah candradimuka di awal pernikahannya. Di tahun-tahun pertama, kalian mungkin akan dihadapkan pada berbagai kesulitan, baik dari segi finansial yang serba pas-pasan, maupun gesekan sifat karena proses penyesuaian (babat alas).\n\nMasa-masa awal ini akan penuh dengan air mata, keringat, dan perjuangan batin. Namun, jangan pernah menyerah! Ujian ini sebenarnya adalah cara alam semesta membentuk mental dan karakter kalian berdua agar menjadi sekuat baja.\n\nJika kalian berdua mampu bersabar, saling berpegangan tangan, dan tidak lari dari masalah, maka di pertengahan hingga akhir usia pernikahan, kalian akan menuai kesuksesan yang sangat luar biasa. Kalian akan membangun 'kerajaan' kalian sendiri dari nol, mencapai kekayaan, dan kebahagiaan paripurna di masa tua."
+      "desc": "Filosofi TOPO (bertapa) menggambarkan sebuah rumah tangga yang harus melewati kawah candradimuka di awal pernikahannya. Di tahun-tahun pertama, kalian mungkin akan dihadapkan pada berbagai kesulitan, baik dari segi finansial yang serba pas-pasan, maupun gesekan sifat karena proses penyesuaian (babat alas).\n\nMasa-masa awal ini akan penuh dengan air mata, keringat, dan perjuangan batin. Namun, jangan pernah menyerah! Ujian ini sebenarnya adalah cara alam semesta membentuk mental dan karakter kalian berdua agar menjadi sekuat baja.\n\nJika kalian berdua mampu bersabar, saling berpegangan tangan, dan tidak lari dari masalah, maka di pertengahan hingga akhir usia pernikahan, kalian akan menuai kesuksesan yang sangat luar biasa. Kalian akan membangun 'kerajaan' kalian sendiri dari nol, mencapai kekayaan, and kebahagiaan paripurna di masa tua."
     },
     {
       "title": "TINARI (5) - Sang Penarik Rezeki",
