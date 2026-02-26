@@ -24,6 +24,9 @@ import 'package:version/version.dart';
 // IMPORT SENJATA RESPONSIVE SULTAN
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+// IMPORT PENERJEMAH BAHASA INDONESIA UNTUK KALENDER
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null);
@@ -63,7 +66,7 @@ class NotificationService {
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
+      UILocalNotificationDateInterpretation.absoluteTime,
     );
   }
 }
@@ -102,6 +105,18 @@ class AlWaqiahApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+
+          // --- PENGATURAN BAHASA INDONESIA (KALENDER DLL) ---
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('id', 'ID'),
+          ],
+          // --------------------------------------------------
+
           theme: ThemeData(
             brightness: Brightness.dark,
             scaffoldBackgroundColor: const Color(0xFF0F0F0F),
@@ -126,10 +141,10 @@ class AlWaqiahApp extends StatelessWidget {
               storeController: UpgraderStoreController(
                 onAndroid:
                     () => UpgraderAppcastStore(
-                      appcastURL:
-                          'https://raw.githubusercontent.com/Yusuf-Ardiansyah/Yasin-Tahlil/refs/heads/main/appcast.xml',
-                      osVersion: Version(1, 0, 0),
-                    ),
+                  appcastURL:
+                  'https://raw.githubusercontent.com/Yusuf-Ardiansyah/Yasin-Tahlil/refs/heads/main/appcast.xml',
+                  osVersion: Version(1, 0, 0),
+                ),
               ),
               debugDisplayAlways: false,
             ),
@@ -186,7 +201,7 @@ class MenuUtama extends StatelessWidget {
       },
       {
         "text":
-            "Cukuplah Allah menjadi Penolong kami dan Allah adalah sebaik-baik Pelindung.",
+        "Cukuplah Allah menjadi Penolong kami dan Allah adalah sebaik-baik Pelindung.",
         "surah": "Ali 'Imran: 173",
       },
       {
@@ -195,12 +210,12 @@ class MenuUtama extends StatelessWidget {
       },
       {
         "text":
-            "Dan barangsiapa bertawakal kepada Allah, niscaya Allah akan mencukupkan keperluannya.",
+        "Dan barangsiapa bertawakal kepada Allah, niscaya Allah akan mencukupkan keperluannya.",
         "surah": "At-Thalaq: 3",
       },
       {
         "text":
-            "Boleh jadi kamu membenci sesuatu, padahal ia amat baik bagimu.",
+        "Boleh jadi kamu membenci sesuatu, padahal ia amat baik bagimu.",
         "surah": "Al-Baqarah: 216",
       },
     ];
@@ -445,13 +460,13 @@ class MenuUtama extends StatelessWidget {
   );
 
   Widget _buildMenuItem(
-    BuildContext c,
-    String l,
-    String t,
-    String s,
-    Color col,
-    String type,
-  ) => Card(
+      BuildContext c,
+      String l,
+      String t,
+      String s,
+      Color col,
+      String type,
+      ) => Card(
     color: const Color(0xFF1A1A1A),
     margin: EdgeInsets.only(bottom: 10.h),
     child: ListTile(
@@ -573,42 +588,42 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
     {
       "title": "PESTHI (8/0) - Kedamaian Sejati",
       "desc":
-          "Dalam perhitungan Primbon Jawa, jatuh pada hitungan PESTHI adalah sebuah anugerah agung dari Sang Pencipta. Rumah tangga yang dibangun di atas fondasi ini dijanjikan akan berjalan dengan sangat rukun, tenteram, dan damai sejahtera hingga masa tua memisahkan.\n\nKehidupan pernikahan kalian ibarat air sungai yang mengalir tenang. Meskipun sesekali ada kerikil masalah atau perbedaan pendapat, hal tersebut sama sekali tidak akan mampu merusak keharmonisan keluarga. Kalian memiliki ikatan batin yang sangat kuat, saling mengerti tanpa harus banyak bicara, dan memiliki cinta yang mengakar dalam.\n\nSecara ekonomi dan sosial, kehidupan kalian akan stabil. Rezeki selalu ada dan cukup untuk memenuhi kebutuhan. Kunci utama dari langgengnya hubungan ini adalah rasa syukur yang tak pernah putus atas ketenangan yang jarang didapatkan oleh pasangan lain.",
+      "Dalam perhitungan Primbon Jawa, jatuh pada hitungan PESTHI adalah sebuah anugerah agung dari Sang Pencipta. Rumah tangga yang dibangun di atas fondasi ini dijanjikan akan berjalan dengan sangat rukun, tenteram, dan damai sejahtera hingga masa tua memisahkan.\n\nKehidupan pernikahan kalian ibarat air sungai yang mengalir tenang. Meskipun sesekali ada kerikil masalah atau perbedaan pendapat, hal tersebut sama sekali tidak akan mampu merusak keharmonisan keluarga. Kalian memiliki ikatan batin yang sangat kuat, saling mengerti tanpa harus banyak bicara, dan memiliki cinta yang mengakar dalam.\n\nSecara ekonomi dan sosial, kehidupan kalian akan stabil. Rezeki selalu ada dan cukup untuk memenuhi kebutuhan. Kunci utama dari langgengnya hubungan ini adalah rasa syukur yang tak pernah putus atas ketenangan yang jarang didapatkan oleh pasangan lain.",
     },
     {
       "title": "PEGAT (1) - Ujian Kesabaran",
       "desc":
-          "Hitungan PEGAT (berarti putus/berpisah) menandakan adanya potensi rintangan yang cukup berat dalam perjalanan bahtera rumah tangga kalian. Sering kali, badai ujian ini dipicu oleh masalah ekonomi, perbedaan prinsip yang tajam, atau bahkan campur tangan pihak luar seperti keluarga besar maupun lingkungan pertemanan.\n\nNamun, ini bukanlah vonis mutlak, melainkan sebuah peringatan kewaspadaan. Pasangan dengan hitungan ini dituntut untuk memiliki kesabaran ekstra tinggi, kompromi tingkat dewa, dan kedewasaan emosional. Jika ego masing-masing selalu dikedepankan, maka potensi perpisahan akan sangat besar.\n\nUntuk menetralisir energi ini, disarankan untuk selalu mendekatkan diri kepada Tuhan, memperbanyak sedekah, dan saling menurunkan gengsi saat terjadi pertengkaran. Komunikasi yang terbuka dan niat untuk saling mempertahankan adalah kunci penawar paling ampuh.",
+      "Hitungan PEGAT (berarti putus/berpisah) menandakan adanya potensi rintangan yang cukup berat dalam perjalanan bahtera rumah tangga kalian. Sering kali, badai ujian ini dipicu oleh masalah ekonomi, perbedaan prinsip yang tajam, atau bahkan campur tangan pihak luar seperti keluarga besar maupun lingkungan pertemanan.\n\nNamun, ini bukanlah vonis mutlak, melainkan sebuah peringatan kewaspadaan. Pasangan dengan hitungan ini dituntut untuk memiliki kesabaran ekstra tinggi, kompromi tingkat dewa, dan kedewasaan emosional. Jika ego masing-masing selalu dikedepankan, maka potensi perpisahan akan sangat besar.\n\nUntuk menetralisir energi ini, disarankan untuk selalu mendekatkan diri kepada Tuhan, memperbanyak sedekah, dan saling menurunkan gengsi saat terjadi pertengkaran. Komunikasi yang terbuka dan niat untuk saling mempertahankan adalah kunci penawar paling ampuh.",
     },
     {
       "title": "RATU (2) - Mahkota Kehormatan",
       "desc":
-          "Pasangan yang jatuh pada hitungan RATU bagaikan raja dan permaisuri yang bertahta. Pernikahan kalian akan memancarkan aura wibawa dan karisma yang membuat kalian sangat disegani, dihormati, serta sering dijadikan teladan oleh tetangga dan lingkungan sekitar.\n\nKehidupan rumah tangga ini dijanjikan akan dikaruniai rezeki yang mengalir deras dari berbagai pintu, kebahagiaan yang melimpah, dan kemuliaan derajat. Kalian akan sangat jarang tertimpa musibah besar atau kesulitan finansial yang berarti, karena energi alam semesta sangat mendukung persatuan kalian.\n\nKalian adalah pasangan yang sangat beruntung. Namun, ingatlah bahwa mahkota Ratu juga membawa tanggung jawab. Jangan sampai kemuliaan ini membuat kalian sombong. Tetaplah dermawan dan merendah agar rezeki dan keharmonisan tersebut tetap kekal abadi.",
+      "Pasangan yang jatuh pada hitungan RATU bagaikan raja dan permaisuri yang bertahta. Pernikahan kalian akan memancarkan aura wibawa dan karisma yang membuat kalian sangat disegani, dihormati, serta sering dijadikan teladan oleh tetangga dan lingkungan sekitar.\n\nKehidupan rumah tangga ini dijanjikan akan dikaruniai rezeki yang mengalir deras dari berbagai pintu, kebahagiaan yang melimpah, dan kemuliaan derajat. Kalian akan sangat jarang tertimpa musibah besar atau kesulitan finansial yang berarti, karena energi alam semesta sangat mendukung persatuan kalian.\n\nKalian adalah pasangan yang sangat beruntung. Namun, ingatlah bahwa mahkota Ratu juga membawa tanggung jawab. Jangan sampai kemuliaan ini membuat kalian sombong. Tetaplah dermawan dan merendah agar rezeki dan keharmonisan tersebut tetap kekal abadi.",
     },
     {
       "title": "JODOH (3) - Takdir Semesta",
       "desc":
-          "Ini adalah tingkat kecocokan yang paling diidamkan. Jatuh pada hitungan JODOH berarti kalian memang ditakdirkan bersama oleh semesta, ibarat gembok yang telah menemukan kuncinya. Chemistry di antara kalian mengalir begitu natural tanpa perlu dipaksakan.\n\nKalian berdua memiliki kapasitas yang luar biasa untuk saling mentolerir, menerima kekurangan masa lalu, dan melengkapi satu sama lain. Rumah tangga ini akan diwarnai dengan romansa yang tak lekang oleh waktu, kerukunan, kedamaian, dan kasih sayang yang tulus hingga akhir hayat.\n\nKetika ada masalah, kalian selalu bisa menemukan jalan tengah dengan mudah. Komunikasi batin kalian sangat selaras. Jaga terus kemesraan dan komunikasi yang hangat ini, karena fondasi JODOH adalah anugerah terbesar dalam sebuah ikatan pernikahan.",
+      "Ini adalah tingkat kecocokan yang paling diidamkan. Jatuh pada hitungan JODOH berarti kalian memang ditakdirkan bersama oleh semesta, ibarat gembok yang telah menemukan kuncinya. Chemistry di antara kalian mengalir begitu natural tanpa perlu dipaksakan.\n\nKalian berdua memiliki kapasitas yang luar biasa untuk saling mentolerir, menerima kekurangan masa lalu, dan melengkapi satu sama lain. Rumah tangga ini akan diwarnai dengan romansa yang tak lekang oleh waktu, kerukunan, kedamaian, dan kasih sayang yang tulus hingga akhir hayat.\n\nKetika ada masalah, kalian selalu bisa menemukan jalan tengah dengan mudah. Komunikasi batin kalian sangat selaras. Jaga terus kemesraan dan komunikasi yang hangat ini, karena fondasi JODOH adalah anugerah terbesar dalam sebuah ikatan pernikahan.",
     },
     {
       "title": "TOPO (4) - Berakit-rakit ke Hulu",
       "desc":
-          "Filosofi TOPO (bertapa) menggambarkan sebuah rumah tangga yang harus melewati kawah candradimuka di awal pernikahannya. Di tahun-tahun pertama, kalian mungkin akan dihadapkan pada berbagai kesulitan, baik dari segi finansial yang serba pas-pasan, maupun gesekan sifat karena proses penyesuaian (babat alas).\n\nMasa-masa awal ini akan penuh dengan air mata, keringat, dan perjuangan batin. Namun, jangan pernah menyerah! Ujian ini sebenarnya adalah cara alam semesta membentuk mental dan karakter kalian berdua agar menjadi sekuat baja.\n\nJika kalian berdua mampu bersabar, saling berpegangan tangan, dan tidak lari dari masalah, maka di pertengahan hingga akhir usia pernikahan, kalian akan menuai kesuksesan yang sangat luar biasa. Kalian akan membangun 'kerajaan' kalian sendiri dari nol, mencapai kekayaan, and kebahagiaan paripurna di masa tua.",
+      "Filosofi TOPO (bertapa) menggambarkan sebuah rumah tangga yang harus melewati kawah candradimuka di awal pernikahannya. Di tahun-tahun pertama, kalian mungkin akan dihadapkan pada berbagai kesulitan, baik dari segi finansial yang serba pas-pasan, maupun gesekan sifat karena proses penyesuaian (babat alas).\n\nMasa-masa awal ini akan penuh dengan air mata, keringat, dan perjuangan batin. Namun, jangan pernah menyerah! Ujian ini sebenarnya adalah cara alam semesta membentuk mental dan karakter kalian berdua agar menjadi sekuat baja.\n\nJika kalian berdua mampu bersabar, saling berpegangan tangan, dan tidak lari dari masalah, maka di pertengahan hingga akhir usia pernikahan, kalian akan menuai kesuksesan yang sangat luar biasa. Kalian akan membangun 'kerajaan' kalian sendiri dari nol, mencapai kekayaan, and kebahagiaan paripurna di masa tua.",
     },
     {
       "title": "TINARI (5) - Sang Penarik Rezeki",
       "desc":
-          "Pasangan dengan hitungan TINARI adalah mereka yang senantiasa dinaungi oleh bintang keberuntungan abadi. Kehidupan rumah tangga kalian akan terasa jauh lebih ringan karena kalian akan sangat mudah dalam mencari jalan rezeki.\n\nKalian akan jarang sekali mengalami kekurangan finansial yang mencekik. Ke mana pun kalian melangkah atau usaha apa pun yang kalian bangun bersama, pintu kemudahan akan selalu terbuka. Hidup kalian penuh dengan anugerah, keceriaan, dan rasa syukur yang berlimpah. \n\nSelain itu, rumah tangga Tinari sering kali menjadi tempat singgah yang nyaman bagi sanak saudara, karena kehangatan dan kemurahan hati kalian. Sangat cocok bagi kalian untuk membangun bisnis atau usaha bersama, karena perpaduan energi kalian adalah magnet rezeki yang sangat kuat.",
+      "Pasangan dengan hitungan TINARI adalah mereka yang senantiasa dinaungi oleh bintang keberuntungan abadi. Kehidupan rumah tangga kalian akan terasa jauh lebih ringan karena kalian akan sangat mudah dalam mencari jalan rezeki.\n\nKalian akan jarang sekali mengalami kekurangan finansial yang mencekik. Ke mana pun kalian melangkah atau usaha apa pun yang kalian bangun bersama, pintu kemudahan akan selalu terbuka. Hidup kalian penuh dengan anugerah, keceriaan, dan rasa syukur yang berlimpah. \n\nSelain itu, rumah tangga Tinari sering kali menjadi tempat singgah yang nyaman bagi sanak saudara, karena kehangatan dan kemurahan hati kalian. Sangat cocok bagi kalian untuk membangun bisnis atau usaha bersama, karena perpaduan energi kalian adalah magnet rezeki yang sangat kuat.",
     },
     {
       "title": "PADU (6) - Benci tapi Rindu",
       "desc":
-          "Hitungan PADU (bertengkar) mengisyaratkan sebuah rumah tangga yang akan sangat bising. Tiada hari tanpa cekcok, perdebatan, dan silang pendapat. Anehnya, pertengkaran ini sering kali hanya dipicu oleh masalah-masalah sepele atau sekadar adu gengsi dan ego masing-masing.\n\nBagi orang luar yang melihat, kalian mungkin terlihat seperti musuh yang terpaksa tinggal serumah. Namun inilah letak keunikannya: sekeras apa pun piring berterbangan atau pintu dibanting, kalian memiliki ikatan batin (chemistry) yang sangat aneh dan tak bisa dipisahkan. Kalian sering bertengkar, namun sangat jauh dari kata perceraian.\n\nKalian ibarat Tom & Jerry; tidak bisa hidup damai jika bersama, tapi akan saling mencari dan merindu gila-gilaan jika dipisahkan. Saran terbaik: belajarlah mengelola emosi dan ubah energi amarah menjadi candaan, agar rumah tangga tetap seru tanpa melukai hati.",
+      "Hitungan PADU (bertengkar) mengisyaratkan sebuah rumah tangga yang akan sangat bising. Tiada hari tanpa cekcok, perdebatan, dan silang pendapat. Anehnya, pertengkaran ini sering kali hanya dipicu oleh masalah-masalah sepele atau sekadar adu gengsi dan ego masing-masing.\n\nBagi orang luar yang melihat, kalian mungkin terlihat seperti musuh yang terpaksa tinggal serumah. Namun inilah letak keunikannya: sekeras apa pun piring berterbangan atau pintu dibanting, kalian memiliki ikatan batin (chemistry) yang sangat aneh dan tak bisa dipisahkan. Kalian sering bertengkar, namun sangat jauh dari kata perceraian.\n\nKalian ibarat Tom & Jerry; tidak bisa hidup damai jika bersama, tapi akan saling mencari dan merindu gila-gilaan jika dipisahkan. Saran terbaik: belajarlah mengelola emosi dan ubah energi amarah menjadi candaan, agar rumah tangga tetap seru tanpa melukai hati.",
     },
     {
       "title": "SUJANAN (7) - Badai Api Cemburu",
       "desc":
-          "Jatuh pada hitungan SUJANAN (curiga/cemburu) adalah sebuah peringatan keras. Rumah tangga ini sangat rawan didera cobaan emosional yang berat, terutama yang berkaitan dengan kepercayaan. Ada potensi besar munculnya kecemburuan buta, ketidaksetiaan, atau godaan kuat dari pihak ketiga.\n\nRumah tangga ini akan sering diuji oleh kecurigaan, baik yang beralasan maupun yang hanya sekadar prasangka. Ujian kesetiaan akan datang silih berganti. Oleh karena itu, hubungan ini menuntut kejujuran absolut dan transparansi total. Jangan pernah ada rahasia, baik urusan keuangan maupun urusan komunikasi di ponsel.\n\nUntuk menghindari kehancuran, kalian membutuhkan fondasi iman yang ekstra kuat. Perbanyaklah ibadah bersama, saling menguatkan komitmen setiap hari, dan segera potong rantai pergaulan yang berpotensi merusak rumah tangga. Kesetiaan adalah harga mati untuk hitungan ini.",
+      "Jatuh pada hitungan SUJANAN (curiga/cemburu) adalah sebuah peringatan keras. Rumah tangga ini sangat rawan didera cobaan emosional yang berat, terutama yang berkaitan dengan kepercayaan. Ada potensi besar munculnya kecemburuan buta, ketidaksetiaan, atau godaan kuat dari pihak ketiga.\n\nRumah tangga ini akan sering diuji oleh kecurigaan, baik yang beralasan maupun yang hanya sekadar prasangka. Ujian kesetiaan akan datang silih berganti. Oleh karena itu, hubungan ini menuntut kejujuran absolut dan transparansi total. Jangan pernah ada rahasia, baik urusan keuangan maupun urusan komunikasi di ponsel.\n\nUntuk menghindari kehancuran, kalian membutuhkan fondasi iman yang ekstra kuat. Perbanyaklah ibadah bersama, saling menguatkan komitmen setiap hari, dan segera potong rantai pergaulan yang berpotensi merusak rumah tangga. Kesetiaan adalah harga mati untuk hitungan ini.",
     },
   ];
 
@@ -682,7 +697,7 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
                 _buildDateSelector(
                   "Tanggal Lahir Pria",
                   tglPria,
-                  (date) => setState(() => tglPria = date),
+                      (date) => setState(() => tglPria = date),
                   Icons.male,
                 ),
                 SizedBox(height: 15.h),
@@ -691,7 +706,7 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
                 _buildDateSelector(
                   "Tanggal Lahir Wanita",
                   tglWanita,
-                  (date) => setState(() => tglWanita = date),
+                      (date) => setState(() => tglWanita = date),
                   Icons.female,
                 ),
                 SizedBox(height: 30.h),
@@ -711,9 +726,9 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
                     ),
                   ),
                   onPressed:
-                      (tglPria != null && tglWanita != null)
-                          ? _kalkulasiJodoh
-                          : null,
+                  (tglPria != null && tglWanita != null)
+                      ? _kalkulasiJodoh
+                      : null,
                   child: Text(
                     "CEK KECOCOKAN",
                     style: TextStyle(
@@ -840,11 +855,11 @@ class _WetonJodohPageState extends State<WetonJodohPage> {
   }
 
   Widget _buildDateSelector(
-    String label,
-    DateTime? current,
-    Function(DateTime) onSelect,
-    IconData icon,
-  ) {
+      String label,
+      DateTime? current,
+      Function(DateTime) onSelect,
+      IconData icon,
+      ) {
     return Card(
       color: const Color(0xFF1A1A1A),
       shape: RoundedRectangleBorder(
@@ -1096,7 +1111,7 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
     _timeString = DateFormat('HH:mm:ss').format(DateTime.now());
     _timer = Timer.periodic(
       const Duration(seconds: 1),
-      (Timer t) => _updateTime(),
+          (Timer t) => _updateTime(),
     );
     _loadSavedLocation();
     _initJadwal();
@@ -1122,9 +1137,9 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
   _loadSavedLocation() async {
     final prefs = await SharedPreferences.getInstance();
     setState(
-      () =>
-          alamatLengkap =
-              prefs.getString('saved_address') ?? "Mencari lokasi...",
+          () =>
+      alamatLengkap =
+          prefs.getString('saved_address') ?? "Mencari lokasi...",
     );
   }
 
@@ -1148,7 +1163,7 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
         prayerTimes = PrayerTimes.today(myCoords, params);
         alamatLengkap = finalAlamat;
         koordinatStr =
-            "Lat: ${pos.latitude.toStringAsFixed(3)}, Lon: ${pos.longitude.toStringAsFixed(3)}";
+        "Lat: ${pos.latitude.toStringAsFixed(3)}, Lon: ${pos.longitude.toStringAsFixed(3)}";
       });
 
       NotificationService.scheduleAdzan(101, "Subuh", prayerTimes!.fajr);
@@ -1179,107 +1194,107 @@ class _JadwalSholatPageState extends State<JadwalSholatPage> {
         iconTheme: IconThemeData(color: const Color(0xFFFFD54F), size: 24.sp),
       ),
       body:
-          prayerTimes == null
-              ? const Center(
-                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
-              )
-              : Column(
-                children: [
-                  // BOX JAM REALTIME (EMAS & HIJAU)
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.all(20.w),
-                    padding: EdgeInsets.symmetric(vertical: 25.h),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF004D40), // Hijau khas masjid
-                      borderRadius: BorderRadius.circular(20.r),
-                      border: Border.all(
-                        color: const Color(0xFFFFD54F),
-                        width: 2.w,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.5),
-                          blurRadius: 10.r,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          "WAKTU SAAT INI",
-                          style: TextStyle(
-                            color: const Color(0xFFFFD54F),
-                            fontSize: 14.sp,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          _timeString, // Jam yang jalan detiknya
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 45.sp,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'monospace', // Gaya digital classic
-                          ),
-                        ),
-                        Text(
-                          DateFormat(
-                            'EEEE, d MMMM yyyy',
-                            'id_ID',
-                          ).format(DateTime.now()),
-                          style: TextStyle(
-                            color: const Color(0xFFFFD54F),
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // LOKASI
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          color: const Color(0xFFFFD54F),
-                          size: 16.sp,
-                        ),
-                        SizedBox(width: 8.w),
-                        Expanded(
-                          child: Text(
-                            alamatLengkap,
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 13.sp,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15.h),
-                  // LIST JADWAL SHOLAT
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      children: [
-                        _buildTimeCard("Subuh", prayerTimes!.fajr),
-                        _buildTimeCard("Terbit", prayerTimes!.sunrise),
-                        _buildTimeCard("Dzuhur", prayerTimes!.dhuhr),
-                        _buildTimeCard("Ashar", prayerTimes!.asr),
-                        _buildTimeCard("Maghrib", prayerTimes!.maghrib),
-                        _buildTimeCard("Isya", prayerTimes!.isha),
-                      ],
-                    ),
-                  ),
-                ],
+      prayerTimes == null
+          ? const Center(
+        child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+      )
+          : Column(
+        children: [
+          // BOX JAM REALTIME (EMAS & HIJAU)
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.all(20.w),
+            padding: EdgeInsets.symmetric(vertical: 25.h),
+            decoration: BoxDecoration(
+              color: const Color(0xFF004D40), // Hijau khas masjid
+              borderRadius: BorderRadius.circular(20.r),
+              border: Border.all(
+                color: const Color(0xFFFFD54F),
+                width: 2.w,
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 10.r,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "WAKTU SAAT INI",
+                  style: TextStyle(
+                    color: const Color(0xFFFFD54F),
+                    fontSize: 14.sp,
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                Text(
+                  _timeString, // Jam yang jalan detiknya
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 45.sp,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'monospace', // Gaya digital classic
+                  ),
+                ),
+                Text(
+                  DateFormat(
+                    'EEEE, d MMMM yyyy',
+                    'id_ID',
+                  ).format(DateTime.now()),
+                  style: TextStyle(
+                    color: const Color(0xFFFFD54F),
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // LOKASI
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: const Color(0xFFFFD54F),
+                  size: 16.sp,
+                ),
+                SizedBox(width: 8.w),
+                Expanded(
+                  child: Text(
+                    alamatLengkap,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 13.sp,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 15.h),
+          // LIST JADWAL SHOLAT
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              children: [
+                _buildTimeCard("Subuh", prayerTimes!.fajr),
+                _buildTimeCard("Terbit", prayerTimes!.sunrise),
+                _buildTimeCard("Dzuhur", prayerTimes!.dhuhr),
+                _buildTimeCard("Ashar", prayerTimes!.asr),
+                _buildTimeCard("Maghrib", prayerTimes!.maghrib),
+                _buildTimeCard("Isya", prayerTimes!.isha),
+              ],
+            ),
+          ),
+        ],
+      ),
       bottomNavigationBar: _buildBottomBranding(),
     );
   }
@@ -1440,9 +1455,9 @@ class _QiblahPageState extends State<QiblahPage>
                     borderRadius: BorderRadius.circular(25.r),
                     border: Border.all(
                       color:
-                          sel < 2.0
-                              ? Colors.greenAccent
-                              : const Color(0xFFFFD54F).withOpacity(0.3),
+                      sel < 2.0
+                          ? Colors.greenAccent
+                          : const Color(0xFFFFD54F).withOpacity(0.3),
                     ),
                   ),
                   child: CustomPaint(
@@ -1459,9 +1474,9 @@ class _QiblahPageState extends State<QiblahPage>
                               fontSize: 45.sp,
                               fontWeight: FontWeight.bold,
                               color:
-                                  sel < 2.0
-                                      ? Colors.greenAccent
-                                      : const Color(0xFFFFD54F),
+                              sel < 2.0
+                                  ? Colors.greenAccent
+                                  : const Color(0xFFFFD54F),
                             ),
                           ),
                           SizedBox(height: 15.h),
@@ -1526,9 +1541,9 @@ class _QiblahPageState extends State<QiblahPage>
                                 : "PUTAR HP PERLAHAN",
                             style: TextStyle(
                               color:
-                                  sel < 2.0
-                                      ? Colors.greenAccent
-                                      : Colors.white54,
+                              sel < 2.0
+                                  ? Colors.greenAccent
+                                  : Colors.white54,
                               fontWeight: FontWeight.bold,
                               fontSize: 14.sp,
                             ),
@@ -1721,115 +1736,115 @@ class _SurahDetailPageState extends State<SurahDetailPage> {
         iconTheme: IconThemeData(color: const Color(0xFFFFD54F), size: 24.sp),
       ),
       body:
-          isLoading
-              ? const Center(
-                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
-              )
-              : ScrollablePositionedList.builder(
-                itemCount: d.length,
-                itemScrollController: itemScrollController,
-                itemBuilder: (c, i) {
-                  bool isP =
-                      currentPlayingIndex == i &&
-                      player.state == PlayerState.playing;
-                  return Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color:
-                          isP
-                              ? const Color(0xFF00241E)
-                              : const Color(0xFF141414),
-                      borderRadius: BorderRadius.circular(20.r),
-                      border: Border.all(
-                        color: isP ? const Color(0xFFFFD54F) : Colors.white10,
-                        width: 1.5.w,
+      isLoading
+          ? const Center(
+        child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+      )
+          : ScrollablePositionedList.builder(
+        itemCount: d.length,
+        itemScrollController: itemScrollController,
+        itemBuilder: (c, i) {
+          bool isP =
+              currentPlayingIndex == i &&
+                  player.state == PlayerState.playing;
+          return Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 12.h,
+            ),
+            decoration: BoxDecoration(
+              color:
+              isP
+                  ? const Color(0xFF00241E)
+                  : const Color(0xFF141414),
+              borderRadius: BorderRadius.circular(20.r),
+              border: Border.all(
+                color: isP ? const Color(0xFFFFD54F) : Colors.white10,
+                width: 1.5.w,
+              ),
+            ),
+            child: CustomPaint(
+              painter: AbstractPlatinumPainter(
+                color: const Color(0xFFFFD54F).withOpacity(0.8),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(35.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      d[i]['ar'],
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: (isTahlil ? 24 : 28).sp,
+                        fontWeight: FontWeight.bold,
+                        height: 2,
                       ),
                     ),
-                    child: CustomPaint(
-                      painter: AbstractPlatinumPainter(
-                        color: const Color(0xFFFFD54F).withOpacity(0.8),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(35.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              d[i]['ar'],
-                              textAlign: TextAlign.right,
-                              style: TextStyle(
-                                fontSize: (isTahlil ? 24 : 28).sp,
-                                fontWeight: FontWeight.bold,
-                                height: 2,
-                              ),
-                            ),
-                            SizedBox(height: 25.h),
-                            if (!isTahlil)
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "${d[i]['tr']}",
-                                          style: TextStyle(
-                                            color: const Color(0xFFFFD54F),
-                                            fontStyle: FontStyle.italic,
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 0.5,
-                                          ),
-                                        ),
-                                        SizedBox(height: 12.h),
-                                        Text(
-                                          formatTeks(d[i]['id']),
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 15.sp,
-                                            height: 1.5,
-                                            letterSpacing: 0.3,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                    SizedBox(height: 25.h),
+                    if (!isTahlil)
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${d[i]['tr']}",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFFD54F),
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 0.5,
                                   ),
-                                  SizedBox(width: 15.w),
-                                  GestureDetector(
-                                    onTap: () => putarAudio(i),
-                                    child: Icon(
-                                      isP
-                                          ? Icons.pause_circle
-                                          : Icons.play_circle,
-                                      color: const Color(0xFF00BFA5),
-                                      size: 48.sp,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            if (isTahlil)
-                              Text(
-                                formatTeks(d[i]['id']),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: const Color(0xFFFFD54F),
-                                  fontSize: 16.sp,
-                                  height: 1.6,
-                                  fontWeight: FontWeight.w500,
                                 ),
-                              ),
-                          ],
+                                SizedBox(height: 12.h),
+                                Text(
+                                  formatTeks(d[i]['id']),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.sp,
+                                    height: 1.5,
+                                    letterSpacing: 0.3,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15.w),
+                          GestureDetector(
+                            onTap: () => putarAudio(i),
+                            child: Icon(
+                              isP
+                                  ? Icons.pause_circle
+                                  : Icons.play_circle,
+                              color: const Color(0xFF00BFA5),
+                              size: 48.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    if (isTahlil)
+                      Text(
+                        formatTeks(d[i]['id']),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: const Color(0xFFFFD54F),
+                          fontSize: 16.sp,
+                          height: 1.6,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                    ),
-                  );
-                },
+                  ],
+                ),
               ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -1880,68 +1895,68 @@ class _DoaListPageState extends State<DoaListPage> {
         iconTheme: IconThemeData(color: const Color(0xFFFFD54F), size: 24.sp),
       ),
       body:
-          l
-              ? const Center(
-                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
-              )
-              : ListView.builder(
-                itemCount: d.length,
-                itemBuilder:
-                    (c, i) => Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 8.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF141414),
-                        borderRadius: BorderRadius.circular(20.r),
-                        border: Border.all(
-                          color: const Color(0xFFFFD54F).withOpacity(0.3),
-                        ),
-                      ),
-                      child: CustomPaint(
-                        painter: AbstractPlatinumPainter(
-                          color: const Color(0xFFFFD54F).withOpacity(0.5),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(25.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                d[i]['judul'],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: const Color(0xFFFFD54F),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.sp,
-                                ),
-                              ),
-                              Divider(color: Colors.white10, height: 30.h),
-                              Text(
-                                d[i]['ar'],
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  fontSize: 24.sp,
-                                  fontWeight: FontWeight.bold,
-                                  height: 1.8,
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                              Text(
-                                d[i]['id'],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: const Color(0xFFFFD54F),
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+      l
+          ? const Center(
+        child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+      )
+          : ListView.builder(
+        itemCount: d.length,
+        itemBuilder:
+            (c, i) => Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 10.w,
+            vertical: 8.h,
+          ),
+          decoration: BoxDecoration(
+            color: const Color(0xFF141414),
+            borderRadius: BorderRadius.circular(20.r),
+            border: Border.all(
+              color: const Color(0xFFFFD54F).withOpacity(0.3),
+            ),
+          ),
+          child: CustomPaint(
+            painter: AbstractPlatinumPainter(
+              color: const Color(0xFFFFD54F).withOpacity(0.5),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(25.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    d[i]['judul'],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color(0xFFFFD54F),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp,
                     ),
+                  ),
+                  Divider(color: Colors.white10, height: 30.h),
+                  Text(
+                    d[i]['ar'],
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.bold,
+                      height: 1.8,
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
+                  Text(
+                    d[i]['id'],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color(0xFFFFD54F),
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                ],
               ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -2155,95 +2170,95 @@ class _AsmaulHusnaPageState extends State<AsmaulHusnaPage> {
         iconTheme: IconThemeData(color: const Color(0xFFFFD54F), size: 24.sp),
       ),
       body:
-          l
-              ? const Center(
-                child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
-              )
-              : GridView.builder(
-                padding: EdgeInsets.all(15.w),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15.w,
-                  mainAxisSpacing: 15.h,
-                  childAspectRatio: 0.85,
-                ),
-                itemCount: d.length,
-                itemBuilder: (context, index) {
-                  final item = d[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF141414),
-                      borderRadius: BorderRadius.circular(15.r),
-                      border: Border.all(
-                        color: const Color(0xFFFFD54F).withOpacity(0.3),
+      l
+          ? const Center(
+        child: CircularProgressIndicator(color: Color(0xFFFFD54F)),
+      )
+          : GridView.builder(
+        padding: EdgeInsets.all(15.w),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 15.w,
+          mainAxisSpacing: 15.h,
+          childAspectRatio: 0.85,
+        ),
+        itemCount: d.length,
+        itemBuilder: (context, index) {
+          final item = d[index];
+          return Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF141414),
+              borderRadius: BorderRadius.circular(15.r),
+              border: Border.all(
+                color: const Color(0xFFFFD54F).withOpacity(0.3),
+              ),
+            ),
+            child: CustomPaint(
+              painter: AbstractPlatinumPainter(
+                color: const Color(0xFFFFD54F).withOpacity(0.5),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(12.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(6.w),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: const Color(0xFF00332B),
+                        border: Border.all(
+                          color: const Color(0xFFFFD54F),
+                        ),
                       ),
-                    ),
-                    child: CustomPaint(
-                      painter: AbstractPlatinumPainter(
-                        color: const Color(0xFFFFD54F).withOpacity(0.5),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.w),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(6.w),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFF00332B),
-                                border: Border.all(
-                                  color: const Color(0xFFFFD54F),
-                                ),
-                              ),
-                              child: Text(
-                                item["no"],
-                                style: TextStyle(
-                                  color: const Color(0xFFFFD54F),
-                                  fontSize: 10.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              item["arab"],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 26.sp,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 8.h),
-                            Text(
-                              item["latin"],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: const Color(0xFFFFD54F),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.sp,
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              item["arti"],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11.sp,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const Spacer(),
-                          ],
+                      child: Text(
+                        item["no"],
+                        style: TextStyle(
+                          color: const Color(0xFFFFD54F),
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  );
-                },
+                    const Spacer(),
+                    Text(
+                      item["arab"],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 26.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                    Text(
+                      item["latin"],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: const Color(0xFFFFD54F),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      item["arti"],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 11.sp,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const Spacer(),
+                  ],
+                ),
               ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -2259,10 +2274,10 @@ class AbstractPlatinumPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint =
-        Paint()
-          ..color = color
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.2;
+    Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.2;
     void drawCorner(double x, double y, bool isRight, bool isBottom) {
       double dX = isRight ? -35 : 35;
       double dY = isBottom ? -35 : 35;
