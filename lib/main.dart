@@ -35,7 +35,7 @@ void main() async {
 }
 
 // ==========================================
-// SERVICE: NOTIFIKASI ADZAN (VERSI STABIL V17)
+// SERVICE: NOTIFIKASI ADZAN (UPDATED VERSI 20+)
 // ==========================================
 class NotificationService {
   static final _notifications = FlutterLocalNotificationsPlugin();
@@ -43,21 +43,23 @@ class NotificationService {
   static Future init() async {
     tz.initializeTimeZones();
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    // FIX: Gunakan named parameter 'settings' untuk inisialisasi versi terbaru
     await _notifications.initialize(
-      const InitializationSettings(android: android),
+      settings: const InitializationSettings(android: android),
     );
   }
 
   static Future scheduleAdzan(int id, String title, DateTime time) async {
     if (time.isBefore(DateTime.now())) return;
 
-    // Format aman untuk versi stabil v17.x
+    // FIX: Gunakan named parameter untuk semua argumen di zonedSchedule
     await _notifications.zonedSchedule(
-      id,
-      'Waktunya Sholat $title',
-      'Mari menunaikan ibadah sholat $title tepat waktu.',
-      tz.TZDateTime.from(time, tz.local),
-      const NotificationDetails(
+      id: id,
+      title: 'Waktunya Sholat $title',
+      body: 'Mari menunaikan ibadah sholat $title tepat waktu.',
+      scheduledDate: tz.TZDateTime.from(time, tz.local),
+      notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(
           'adzan_channel_id',
           'Notifikasi Adzan',
@@ -67,8 +69,6 @@ class NotificationService {
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
     );
   }
 }
