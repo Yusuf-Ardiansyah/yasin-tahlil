@@ -1,17 +1,33 @@
-# yasin_tahlil
+﻿# 📖 Yasin & Tahlil Premium
 
-A new Flutter project.
+![Version](https://img.shields.io/badge/version-1.3.0-gold)
+![Flutter](https://img.shields.io/badge/Flutter-v3.x-blue)
+![Platform](https://img.shields.io/badge/Platform-Android-green)
 
-## Getting Started
+Aplikasi ibadah harian yang dirancang dengan antarmuka premium dan fitur lengkap untuk menemani aktivitas spiritual Anda. Fokus pada kemudahan akses Surah Yasin, Tahlil, serta fitur penunjang ibadah lainnya.
 
-This project is a starting point for a Flutter application.
+## ✨ Fitur Utama
+* **Surah Pilihan:** Bacaan Surah Yasin (83 Ayat), Al-Waqi'ah, dan Al-Mulk lengkap dengan audio MP3 berkualitas.
+* **Tahlil & Doa:** Panduan Tahlil lengkap beserta kumpulan doa-doa harian.
+* **Fitur Adzan:** Notifikasi jadwal sholat otomatis yang akurat berdasarkan lokasi (GPS).
+* **Arah Kiblat:** Kompas kiblat responsif dengan fitur getar (*haptic feedback*).
+* **Kearifan Lokal:** Kalkulator Weton Jodoh dan hitungan hari selamatan (40 hari, 100 hari, hingga 1000 hari).
+* **Tasbih Digital:** Memudahkan dzikir harian Anda langsung dari aplikasi.
+* **Premium Design:** Tampilan Mode Gelap (Dark Mode) yang elegan dengan aksen emas yang nyaman di mata.
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Pembaruan Terbaru (v1.3.0)
+* **Update Engine:** Migrasi ke `flutter_local_notifications` v20+ untuk stabilitas notifikasi di Android 14+.
+* **Architecture Build:** APK yang lebih optimal dan ringan (Split APK: ARM64, v7a, x86_64).
+* **GPS Optimization:** Akurasi penentuan jadwal sholat dan arah kiblat yang lebih presisi.
+* **Force Update:** Sistem pembaruan otomatis yang memastikan pengguna selalu menggunakan versi terbaru.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🛠️ Teknologi
+* **Framework:** Flutter (Dart)
+* **Notifications:** Flutter Local Notifications & Workmanager
+* **Build Tool:** Custom `gas_build.bat` Sultan Edition
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 👨‍💻 Developer
+Dikembangkan oleh **Yusuf Ardiansyah**.
+
+---
+*Semoga aplikasi ini bermanfaat dan menjadi amal jariyah bagi pengembang dan penggunanya.*
